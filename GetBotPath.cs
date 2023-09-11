@@ -5,13 +5,13 @@ using System.IO;
 public class CPHInline
 {
     /*
-	 * Sets the bot's execution directory into botPath variable.
+	 * Sets the bot's execution directory into BotPath temp global.
 	 */
     public bool Execute()
     {
         var fileProtocol = System.Reflection.Assembly.GetExecutingAssembly().GetName().CodeBase;
         var path = new System.Uri(fileProtocol).LocalPath;
-        CPH.SetArgument("botPath", Path.GetFullPath(Path.Combine(path, "..")));
+        CPH.SetGlobalVar("BotPath", Path.GetFullPath(Path.Combine(path, "..")), false);
         return true;
     }
 }
