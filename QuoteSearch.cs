@@ -28,7 +28,7 @@ public class CPHInline
     const string QUOTE_OUTPUT_ACTION = "";
     public bool Execute()
     {
-        string QuotesPath = System.IO.Path.Combine(args["botPath"].ToString(), @"data\quotes.dat");
+        string QuotesPath = System.IO.Path.Combine(CPH.GetGlobalVar<string>("BotPath", false), @"data\quotes.dat");
         List<QuoteData> matchingQuotes = new List<QuoteData>();
         string term;
         int termAsNum;
