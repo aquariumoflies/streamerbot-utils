@@ -1,1 +1,37 @@
+# StreamerBot Utils
 
+A collection of utilities I've written for use with StreamerBot.
+
+https://streamer.bot/
+
+## GetBotPath.cs
+
+### Description
+
+Will get the path that contains the StreamerBot executable. Can be useful for reading StreamerBot
+data or building commands that can be seamlessly copied between locations by having files relative
+to the directory.
+
+### Example Usage
+
+```
+Execute Method (GetBothPath, Execute)
+Twitch Message (Test: %botPath%)
+```
+
+### Arguments
+
+None
+
+### Result
+
+`botPath` - Contains path to the bot on your file system.
+
+### Additional notes
+Need to add a reference to System.dll to compile.
+
+### Import String
+
+```
+U0JBRR+LCAAAAAAABACdVktz4jgQvm/V/geWqrmtU7KxAU/VHAIJDoQwAcIjXuYgS7LRIFseWwY8U/nvK5tHMJjs1lDFwf11f93qlrr7159/VCrVNYliyoPq50rt71xA/ZBHYnoUazuxTwPqJ/67vAputBu1ukeJgFL2K/uQnwH0SabylFbutxndTk0iMBFLHmXY7Y8ERjTxv7p9SuKjwns8VfUG3IAjgEmMIhqKPVjNxG877xgWvEOUKcVS8s9OUjlAOUxxHn2j3tAdjSgEqXVFbwCiNDWElKahusSsg3pTVQ++c7MfCUmyQwUJY6dyEkCHkYxTRAkpIFvEEkw6EfcfaCx4lEolF7K4oHXIlUVEi4tnKJYFt17Ek/A0X5WJoCwu6EC2gWk8SoIy/ggGmPu3aJ+4CxzxACVRRAJRhoqIep4syWkyzxK6Z/F96aib5xahpmG4ACimC7GiIxMpEGBdgbqrOk1iutjVTw9wUhZMnKYOVUOBqgkVHTSIYtbcmtIATdU0pV1DAxemIg2zFOpAPUeuFqc8b6f42/vHt0KyL29XWUI+Lmuucnajx0TEFbEkFYeLSigNKjSofHJ2xp8qMPIuGFaEhLeMrklJ6XKFiLhElhaRi3hzuP15sZhReT828WLxRFHEY+6Km8H9y2LRieQJNjxaLRZrXb7EGqip5mLhx4hHjDo3mLHzeH6PcZzGgvg5X5Hu2/lpnFSQNsd5Xvtp0xvORquude8hf+rb8x5z/AHrPozW3c7AQLURc8bGyrE2Hraa3qtmCmSx2B6CRzwfhI6PvEmN/cTWVHzdXMr6K/acye+G4QbPejGcPUmO7RLVnryh2uqOZ4aUGUzijbsh97rtW6+f8kHbW3mPtPViz0c/ZSzcHreoUxsGKG0xYk2/4/kodDTdsy2W2rMBcGo9o2vJPpHF6JtgYnUAbLe013kvfJV+7bG+52wO2vRW+mm9x+Oba6fd6ux52WN7ddA5xpT/H+wloi0fzrZs8tBbY8v87mgb73nceiHzAbBnIJnIHDoZj8XWDjVaqDZgjvRDxsaDPEvnGLuPTzAv7K8ww/fG0plN+OPYuHO0ERv6nZ/2S7yPZffHfiftPrSW2PIyv4k9P8k1m6ZwvDyPT3Jv169aJ85zclfky2rQZwPpu5PatamwZwZ4bPdkrkfD1/mId+nG2+Uyj9/Cs+2Op73M8f5qsJZnkOeZcJTLN16X6kmXrsLHs9jl/QJ43ktkPVM8mxxz68q75A6/fLl4l2FEZEMMKbv6MDFhMB0LGJV13VwjhmsyInHCxAufys6fNbKPdAta1Svt1dBw3cRNrIAacBUdo7oC3bqrENMxNFMjjYahXZhuCPWWWZxyHF9pvWb2O8cOo+tsYubYx41ZNhCyzRz+/4ZsZc7yLvetON0Yg2FM8Al+gPeEB/3dhC9QHMba1V0i5klU0lzBlVBDEvlUCIIncclMrWq6rqmaZtar/2V/5bT0t8bvcVb9JUgsCsh7mS42Axrk203J3uPvWjQo1iFPZLkXxhHcT8GCEfUCHhE5Pm8R4km+oJz72ql0A0GiALIShTDbJ2PRzuxJVL4AHSBQYphV6gPj5B3OyvHrrcAMZYskQUxF+Yiueow7kLU5Z3JgXhx/x12OHdfCs2URBuJl9yTBtWsuqL+/fPlLkPDbv7ZyHOILDAAA
+```
