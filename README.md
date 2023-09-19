@@ -9,7 +9,7 @@ https://streamer.bot/
 Some of these helpers should run at startup and need to run in a dependent order. I would recommend
 to make a new Bootup action that triggers on StreamerBot startup as below:
 
-[!Example of startup action configuration](/startup.png)
+![Example of startup action configuration](/startup.png)
 
 ## GetBotPath.cs
 
