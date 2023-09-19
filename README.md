@@ -38,6 +38,54 @@ Need to add a reference to System.dll to compile.
 U0JBRR+LCAAAAAAABACdVV1zokgUfd+q/Q+UVfO2WoDgx7wFExBjnCjxI6x5oD/EHruBoUElU/nv04Aa0SS1tVb50PfcPvfc083t33//JUm1LY45CYPad6n5TxEgLArjZHYKq2WYkYCwlL3Ha3JDbSi1A4oTT8R+5wuxDDyG85SHTLrb53RlmkC8NFmHcY7d/Eq9mKTsx2pIMD8lvOupKQ25IZ8AhDmMSZQcwFoefiurI69S3YN5EheRf8uIdIQKmKBCfbvV1oCK6xgqrbrWlnG9o0JY7+jKCndbcqujKMfaxbZfKU7zpoKU0vM4DjxAcc6ZxCmuIHtIU4TNOGR9wpMwzkTSyqO8knX0ysKJESaPXrKulPXjMI3O/ZKmCaG8kuPRnZfxSRp8xB97AQrZDTwYd4XDMIBpHOMg+QhNYuL74kjOzbww9NxUIAMN6+36CmhqXYOwVe+uNFjHSrujKR7uNJXuufKyRBblBrTl1iXyqbVXXef4Ofz2vnipOHV9NT7q5uszKVIurqODEy4layyBMJEisUEigfQNlJu/SV7sXzFsMI5uKNniD3wvTw6vsDgXiK/0FnDv+3I5J+Jwd3y5fCAwDnm4Shqju6fl0oxFB7sw3iyXW018Rk1ZOL9cMg7DmBLQQJRe6vl/jE7GE8wKvirdy2U3IEtwL0SFr8Os44/nk41t3fmQzZi7GFDARtTuT7a2OdJhc0KBo2+AtfOR1fGf1W4CLcrdsXyPFqMIMOhPm/QVWbPkx+46NtzQxzx+O452aD7g3vxBcOzXsPngjxXDdua6iOlU4O3bcejbvRt/mIWjnr/x74nx5C4mr0JL6DoGAc1xADODYmv2Ey0mEVA137Vo5s5HMmgOdNsSH3mukXXlqWXKXs9QnxeD6FnUdR3twNkZ9ciNqGO862HdLegZ5oGX3vc2x5yTpuLfd9eQGMyb7+m0P9giq/sTqDv/0TGe8GIku3M5nQoPQc5j0S0gugGbIwpEHezofdGLedLO0BnmR8MNouhOX4P5NLx39FugTuiYma/uEz9oKf+ImZndN9bI8vO6qbs485rOMs9ZX+oT3Pvts2rywpPbKl9+BkM6ErURB+pgDcy8R5+MTx7a3DaLeulEncmTYMZBuQ5LPNeqkPwM70td3O7Z6ZDY0b2z811mcqhOo/wOnHzsGZnwQoFM81F/oLz3aHTFPbieS1GMYcgiQj/9QBGmXuYkXvzR6CwyuLfFE8xTmjyFMzG+83n2VW4lq3YlqZyyuopaXdRBdbkpr+oaElPWW7VWddwFutpVcbutq1dbd5j461yneFM/mcDd/HeJHd+fi2evwL6ez2KQ4H1e8L8PZisvVky7l+oTRakXcYzO8CN8IDzml890hUJsZ0w8gtVgQtjhWSuoBM3bH4YgaKkRCQAA
 ```
 
+## ParseUserConfig.cs
+
+### Description
+
+Some of my scripts need user-configured values. Rather than storing these values in the script or
+actions (which can make it difficult to share or update them), this action supports storing user
+config options in the `user/config.json` directory under the main StreamerBot directory.
+
+Config values will be imported to non-persisted globals with a value of `Config.{key}`. For example:
+
+```
+{
+    "configA": "one",
+    "configB": "two",
+    "nested": {
+        "configC": "three",
+        "configD": "four"
+    }
+}
+```
+
+would get parsed into the following variables:
+
+```
+Config.configA = one
+Config.configB = two
+Config.nested.configC = three
+Config.nested.configD = four
+```
+
+### Arguments
+
+None
+
+### Result
+
+User config values stored in non-persisted global variables.
+
+### Additional notes
+
+This needs to run after GetBotPath as it resolves relative to the bot's location.
+
+### Import String
+
+```
+U0JBRR+LCAAAAAAABACdVttu4kgQfV9p/gHxvES+QIJHmgdwwBgCEyDY4GWkcV8wvXTbHl8AM8q/b7cNBANZrRapQa7LqapT1bh+f/mjUqlucRSTwK9+rah/5gLCwiBKrLNYKcSM+ISl7ENelR6UB7l61OLE5bLf4oE/+i7DwmSYVTp7AVeYcY2bJusgErrWr9SNSMq+r14Ijs8GH/lU5QfpQTorEI5hRMLkqKwK8XsRHbml6C4URjGX/FVIKidVriZI+LtN+VGTkFxTGiu1VgfqqtaUn5QakiCGstRUFBedYuduv1KciqL8lNJLOfZdQLHATKIUlzR7SFOEu1HAeiROgijjRiuXxiWrE1evbhTjWYwjPfBXxCvF9qIgDS9Jq8wSQuOSjUt3bhZPUv9ekMj1UcBa8MjejR4GPkyjCPvJPW0SEc/jfRGM/ijFvGX6iu3/WuK9FufmUSUVXzD3qNQq7tYlVDBeIX7lZwH08HuDs/efFY8GwC3TkuNuMA5blGzxneIKevAK8+IhviklV+tfl0ubcAZ38XI5JDAK4mCVPIw6b8tlN+LF7YJo81hfLrd1PrKqpMracsliGESUgAdE6XVG/xdzmsUJZjliGfDHdUUgS7AeoJx2NB+FgEFvptIDMqzk+04aXMteNvT1Uv7GLBUZWgoVjSG9MeC/qdA/j8Mdsvuxaw+9hbJfQ3XojeW2ObUbXNagXP/0PA48U295L1nTmyiWNGaaNDO6kqu3E44vmcZ6jdjMg76Vmr125sydEKjWAfQ26aXvgsd0GPVNgx7M3kgCap86ejsEpP20OGH2pC3HpJBofwOlwVwbpq4/2gJPGggcji8v2D5cZG0CFC02O1bdsUcyMmbBYHyyiUc6aeVxxUGsm5lGf4u67TUyPO912n6edbxU1DJR9tsF68YWt3nlOUFGU+dQD8zN2Z686G22sPcHZ7o5c1HEcdaQtI95ovFiPgnMZ8kruGk8A0UmgsPBR2yeb4vk9dF9uT5ihqIfZ2y9yPHN0PyJYRFkw2CmTjKO579snC1k8hrpHrHl9hr6I2oJzA3HYU7oyMccngMPH9qaSXZn7ovcNtexZKjwurNWkHPVG2WiDsBnxuwKTqw1sPp0YU94X9alegfTTYlrXMK94L938m9pptGgKGvnM2gZVh11z9gHSK44LvJTXYPGzrQViFwcw8peqPAZ38S/1/8LnNAhlxjOGvQsauodkZMMjJ3XJwvvQz/ZuoqVWj26c6aNGZCP85F5Ye6j98eQaTtn3pfwrLEG9oycZ/D6fJrT5YwmFE85P91TnIbB70iymI/5PB57mzWehj1JzGTm2N2NMzfTY0/v8HZxOqPxVG8MgYI6jt2XnWz9hnp98d+QTpiWAbsrDfQ+4FgZVCyLn2x8nJn5NM9/t+K5vfK7Opzn8SNnvok/+tqw+R2R+R25mq2bHuRzPbu6e4O89p133ZtP797FWd3hvCxra9y3xD+PI6F5n/9fTTJkz87Ywm81/vbt5p0TRhgGLCT005cOwtTNpokb3Xvn5haxu8UTHKc0eQss/t4Xr71/sy1ZVW9SKhYfiOr4Cawea/gR4FpdBc2auwKwtlKaTYDrakMCyo3rDhNvLfLkG9m1LslCEU8Tn2vdaXG5Wppy3aeLU5Gsj/BeBLyUv3883NlDDBHsdkmBAaVuGGN0oT+pj4An+2LJK0Fwd8b49lQWJoSd9qF8D/3yx/s/z7gNfk8LAAA=
+```
+
 ## QuoteSearch (Action)
 
 ### Description
