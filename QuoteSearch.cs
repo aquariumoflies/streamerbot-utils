@@ -15,7 +15,7 @@ public class QuoteData
     public int Id { get; set; }
     public int UserId { get; set; }
     public String User { get; set; }
-    public int GameId { get; set; }
+    public String GameId { get; set; }
     public String GameName { get; set; }
     public String Quote { get; set; }
 }
