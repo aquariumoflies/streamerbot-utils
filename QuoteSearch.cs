@@ -31,6 +31,7 @@ public class CPHInline
         {
             return null;
         }
+
         while (true)
         {
             try
@@ -64,6 +65,7 @@ public class CPHInline
             CPH.SendMessage("Quote not found!");
             return;
         }
+
         // Message when a quote is found
         CPH.SendMessage(String.Format("Aquarium once said: \"{0}\" (at {1})", quote.Quote, quote.Timestamp.ToString("M/d/yyyy")));
     }
@@ -79,7 +81,10 @@ public class CPHInline
             user = args["user"].ToString();
             quote = args["rawInput"].ToString();
         }
-        catch (KeyNotFoundException e) {}
+        catch (KeyNotFoundException e)
+        {
+        }
+
         quote = quote.Substring(4);
         var quoteId = CPH.AddQuoteForTwitch(userId, quote);
         CPH.SendMessage(String.Format("Thank you for adding a quote, {0} (id {1})!", user, quoteId));
@@ -95,7 +100,9 @@ public class CPHInline
         {
             term = args["input0"].ToString().ToLower();
         }
-        catch (KeyNotFoundException e) {}
+        catch (KeyNotFoundException e)
+        {
+        }
 
         // Term is blank or was "add" which is quote add and not search
         if (term.Equals(""))
@@ -103,6 +110,7 @@ public class CPHInline
             ShowQuote(FindQuote(0));
             return false;
         }
+
         if (term.Equals("add"))
         {
             AddQuote();
@@ -137,7 +145,6 @@ public class CPHInline
         var pickedQuoteId = random.Next(matchingQuotes.Count);
         var pickedQuote = matchingQuotes[pickedQuoteId];
         QuoteData cleanQuote = new QuoteData();
-
         cleanQuote.Timestamp = DateTime.Parse(pickedQuote.Timestamp);
         cleanQuote.Id = pickedQuote.Id;
         cleanQuote.UserId = pickedQuote.UserId;
